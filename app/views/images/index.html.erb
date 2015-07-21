@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="form-upload">
+    <%= form_for @image, html: { multipart: true } do |f| %>
+      <%= file_field_tag "images[]", type: :file, multiple: true, class: "file-field"%></br>
+    <% end %>
+  </div>
+  <div class="row list">
+    <%= render partial: "picture", collection: @images %>
+    <div class="col-md-3  ">
+      <div class="thumbnail add-image-thumbnail ">
+        <div id="add-image">
+          <%= image_tag("add_image", class: "add-image") %>
+        </div>
+        <div class="caption">
+          <p>Add image</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="dropZone" ="dropZone" style="width: 100px; height: 100px; background-color: red"></div>
+<script>
+   var dropZone = document.body
+
+    // Optional.   Show the copy icon when dragging over.  Seems to only work for chrome.
+    dropZone.addEventListener('dragover', function(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        e.dataTransfer.dropEffect = 'copy';
+    });
+
+    // Get file data on drop
+    dropZone.addEventListener('drop', function(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        var files = e.dataTransfer.files; // Array of all files
+        for (var i=0, file; file=files[i]; i++) {
+            if (file.type.match(/image.*/)) {
+                var reader = new FileReader();
+                reader.onload = function(e2) { // finished reading file data.
+                    var img = document.createElement('img');
+                    img.src= e2.target.result;
+                    document.body.appendChild(img);
+                }
+                reader.readAsDataURL(file); // start reading the file data.
+    }   }   });
+</script>
