@@ -1,23 +1,27 @@
-<div class="row">
+
   <div class="form-upload">
-    <%= form_for @image, html: { multipart: true } do |f| %>
-      <%= file_field_tag "images[]", type: :file, multiple: true, class: "file-field"%></br>
-    <% end %>
-  </div>
-  <div class="row list">
-    <%= render partial: "picture", collection: @images %>
-    <div class="col-md-3  ">
-      <div class="thumbnail add-image-thumbnail ">
-        <div id="add-image">
-          <%= image_tag("add_image", class: "add-image") %>
-        </div>
-        <div class="caption">
-          <p>Add image</p>
+  <%= form_for @image, html: { multipart: true } do |f| %>
+    <%= file_field_tag "images[]", type: :file, multiple: true, class: "file-field"%></br>
+  <% end %>
+  <div class="row">
+    <div class="list">
+      <%= render partial: "picture", collection: @images %>
+      <div class="col-md-3  ">
+        <div class="thumbnail add-image-thumbnail ">
+          <div id="add-image">
+            <%= image_tag("add_image", class: "add-image") %>
+          </div>
+          <div class="caption">
+            <p>Add image</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+
+<!--
 
 <div id="dropZone" ="dropZone" style="width: 100px; height: 100px; background-color: red"></div>
 <script>
@@ -46,3 +50,5 @@
                 reader.readAsDataURL(file); // start reading the file data.
     }   }   });
 </script>
+
+ -->

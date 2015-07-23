@@ -10,7 +10,7 @@ class ImagesController < ApplicationController
 
   def create
     if params[:images]
-      params[:images].each do |image| 
+      params[:images].each do |image|
         @image = Image.new(image: image)
         @image.save
       end
@@ -18,8 +18,15 @@ class ImagesController < ApplicationController
     redirect_to root_url
   end
 
+  def save_image
+    @image = Image.find(params[:id])
+    send_file "#{Rails.root}/public/#{@image.image.url}"
+  end
+
   private
   def params_image
     params.require(:image).permit(:image)
   end
+
+
 end

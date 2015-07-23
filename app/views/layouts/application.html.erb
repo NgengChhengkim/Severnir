@@ -7,10 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class="col-md-10 col-md-offset-1">
-    <div class="middle">
-      <%= render "layouts/header" %>
-      <%= yield %>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="middle">
+        <%= render "layouts/header" %>
+        <%= yield %>
+      </div>
     </div>
   </div>
 </body>

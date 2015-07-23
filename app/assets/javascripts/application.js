@@ -16,3 +16,12 @@
 //= require_tree .
 //= require jquery
 //= require bootstrap-sprockets
+//= require owl.carousel
+//= require nprogress
+//= require nprogress-turbolinks
+
+NProgress.configure({
+  showSpinner: true,
+  ease: 'ease',
+  speed: 500
+});

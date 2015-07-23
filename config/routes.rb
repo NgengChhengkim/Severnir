@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
   root "images#index"
   resources :images
+
+   get "images/:id/download", to: "images#save_image", as: :save_image
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
